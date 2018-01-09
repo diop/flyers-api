@@ -28,6 +28,7 @@ CREATE TABLE parties (
   created_at DATETIME,
   updated_at DATETIME,
   paid BOOLEAN,
+  eth_address FLOAT UNIQUE NOT NULL,
   venue_id INTEGER NOT NULL REFERENCES venues(id)
 );
 
@@ -37,5 +38,6 @@ CREATE TABLE curators (
   name TEXT,
   email TEXT UNIQUE NOT NULL,
   reputation INTEGER,
-  eth_address FLOAT UNIQUE NOT NULL 
+  eth_address FLOAT UNIQUE NOT NULL,
+  party_id INTEGER NOT NULL REFERENCES parties(id)
 );
