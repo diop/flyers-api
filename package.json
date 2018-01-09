@@ -10,5 +10,11 @@
     "Flyers.ai"
   ],
   "author": "Fodé Diop",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.14.9"
+  }
 }
