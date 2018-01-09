@@ -1,0 +1,14 @@
+{
+  "name": "flyers-api",
+  "version": "1.0.0",
+  "description": "Flyers.ai Backend Api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Flyers.ai"
+  ],
+  "author": "Fodé Diop",
+  "license": "MIT"
+}
