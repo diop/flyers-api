@@ -2,8 +2,9 @@
   "name": "flyers-api",
   "version": "1.0.0",
   "description": "Flyers.ai Backend Api",
-  "main": "index.js",
+  "main": "src/server.js",
   "scripts": {
+    "start": "node src/server.js ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -15,6 +16,6 @@
     "express": "^4.16.2"
   },
   "devDependencies": {
-    "nodemon": "^1.14.9"
+    "nodemon": "^1.14.10"
   }
 }

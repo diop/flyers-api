@@ -21,8 +21,8 @@ CREATE TABLE parties (
   title TEXT NOT NULL,
   description TEXT,
   created_at DATETIME,
-  started_at DATETIME,
   updated_at DATETIME,
+  starts_at DATETIME,
   flyer_file_name TEXT,
   flyer_content_type TEXT,
   flyer_file_size INTEGER,
@@ -32,14 +32,17 @@ CREATE TABLE parties (
   venue_id INTEGER NOT NULL REFERENCES venues(id)
 );
 
-DROP TABLE IF EXISTS guests;
-CREATE TABLE guests (
+DROP TABLE IF EXISTS users;
+CREATE TABLE users (
   id SERIAL,
   name TEXT,
   email TEXT,
+  password TEXT,
   eth_address FLOAT UNIQUE NOT NULL,
   created_at DATETIME,
-  updated_at DATETIME
+  updated_at DATETIME,
+  is_curator BOOLEAN,
+  is_host BOOLEAN
 );
 
 DROP TABLE IF EXISTS curators;
