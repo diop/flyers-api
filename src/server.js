@@ -1,5 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const qr = require('qr-image')
 
 const { addPromotion, addVisitor } = require('./database/queries')
 
@@ -8,7 +9,6 @@ const port = process.env.PORT || 3000
 const app = express()
 
 const urlencodedParser = bodyParser.urlencoded({ extended: false })
-
 
 app.get('/', (req, res, next) => {
   res.send({message: 'Show me the parties'})
@@ -30,6 +30,8 @@ app.post('/visitor', urlencodedParser, (req, res) => {
   addVisitor(req.body.email)
 
   // send email with qr code
+  const qrImage = qr.image('data here', { type: 'png' })
+  qrImage.pipe(require('fs').createWriteStream('qrImage.png'))
 
   res.end()
 })
