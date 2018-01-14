@@ -4,10 +4,10 @@ const { getFlyer } = require('../database/queries')
 
 const formatEventDetails = (details) => {
   return `<img src="http://www.flyers.ai${details.flyerurl}" /><br>
-${details.eventname}
-${details.eventDate} ${details.starttime} - ${details.endtime}
-${details.venuename}
-${details.address}, ${details.city} ${details.state} ${details.zip}
+${details.eventname}<br>
+${details.eventdate} ${details.starttime} - ${details.endtime}<br>
+${details.venuename}<br>
+${details.address}, ${details.city} ${details.state} ${details.zip}<br>
 ${details.website}`
 }
 
@@ -43,7 +43,7 @@ const sendEventLinkEmail = (emailAddress, eventLink, eventId) => {
   })
 }
 
-const sendQrCodeEmail = (emailAddress, qrCodeImage, eventId) => {
+const sendQrCodeEmail = (emailAddress, svgString, eventId) => {
   getFlyer(eventId)
   .then(results => {
     const eventDetails = results[0]
@@ -60,7 +60,7 @@ const sendQrCodeEmail = (emailAddress, qrCodeImage, eventId) => {
       html: emailHTML,
       attachment: [{
         filename: 'qr-code.png',
-        content: qrCodeImage,
+        content: svgString,
         cid: uniqueString
       }]
     }
@@ -73,6 +73,7 @@ const sendQrCodeEmail = (emailAddress, qrCodeImage, eventId) => {
       console.log('Message sent:', info)
     })
   })
+  .catch(console.error)
 }
 
 module.exports = { sendEventLinkEmail, sendQrCodeEmail }

@@ -26,6 +26,7 @@
     "nodemailer": "^4.4.1",
     "pg-promise": "^7.3.3",
     "qr-image": "^3.2.0",
+    "stream-to-string": "^1.1.0",
     "zeppelin-solidity": "^1.5.0"
   },
   "devDependencies": {

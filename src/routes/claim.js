@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const qr = require('qr-image')
+const toString = require('stream-to-string')
 
 const { addVisitor } = require('../database/queries')
 const { sendQrCodeEmail } = require('../utilities/email')
@@ -17,13 +18,17 @@ router.post('/:eventId/:promoterId?', (req, res) => {
   const flyersPromoterId = 1
 
   addVisitor(email)
-    .then((visitorId) => {
-      const redeemUrl = `/redeem/${eventId}/${promoterId || flyersPromoterId}/${visitorId}`
-      const qrImage = qr.image(redeemUrl, { type: 'png' })
+    .then((results) => {
+      const visitorId = results[0].id
+      const redeemUrl = `http://flyers.ai/redeem/${eventId}/${promoterId || flyersPromoterId}/${visitorId}`
+      const qrImage = qr.image(redeemUrl, { type: 'svg' })
 
-      sendQrCodeEmail(email, qrImage, eventId)
-
-      res.redirect(`/details/${eventId}/${promoterId ? promoterId : ''}`)
+      toString(qrImage)
+        .then(svgString => {
+          // sendQrCodeEmail(email, svgString, eventId)
+          // res.redirect(`/details/${eventId}/${promoterId ? promoterId : ''}`)
+          res.send(svgString)
+        })
     })
     .catch(console.error)
 })
