@@ -11,5 +11,6 @@ CREATE TABLE promotions (
   ethWalletAddress TEXT,
   startTime TEXT,
   endTime TEXT,
-  email TEXT
+  email TEXT,
+  flyerUrl TEXT
 );

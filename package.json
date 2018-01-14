@@ -16,7 +16,7 @@
   "author": "Fodé Diop",
   "license": "MIT",
   "dependencies": {
-    "busboy": "^0.2.14",
+    "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "pg-promise": "^7.3.3"
   },

@@ -1,7 +1,12 @@
 const express = require('express')
-const Busboy = require('busboy')
+const bodyParser = require('body-parser')
+
+const { addPromotion } from './database/actions'
 
 const app = express()
+
+app.use(bodyParser.urlencoded({ extended: false }))
+
 const port = process.env.PORT || 3000
 
 app.get('/', (req, res, next) => {
@@ -9,7 +14,9 @@ app.get('/', (req, res, next) => {
 })
 
 app.post('/promotion', (req, res) => {
+  console.log('req.body:', req.body)
 
+  addPromotion(req.body)
 })
 
 app.listen(port, () => {
