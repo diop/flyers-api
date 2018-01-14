@@ -7,9 +7,7 @@ const connection = {
 }
 
 if (process.env.NODE_ENV === 'production') {
-  connection = {
-    host: process.env.DATABASE_URL
-  }
+  connection[host] = process.env.DATABASE_URL
 }
 const db = pgp(connection)
 
