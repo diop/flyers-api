@@ -24,13 +24,14 @@ app.post('/promotion', urlencodedParser, (req, res) => {
     .catch(console.error)
 })
 
-app.post('/visitor', urlencodedParser, (req, res) => {
+app.post('/visitor/:promoterCode?', urlencodedParser, (req, res) => {
   console.log('req.body:', req.body)
+  console.log('req.parameters', req.params)
 
   addVisitor(req.body.email)
 
   // send email with qr code
-  const qrImage = qr.image('data here', { type: 'png' })
+  const qrImage = qr.image('data', { type: 'png' })
   qrImage.pipe(require('fs').createWriteStream('qrImage.png'))
 
   res.end()
