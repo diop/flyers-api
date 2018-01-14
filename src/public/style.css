@@ -105,8 +105,14 @@ body {
   margin-top: 1.5rem;
 }
 
+.flyer-detail__overview-event-venue a {
+  text-decoration: none;
+  color: var(--color-primary-dark);
+}
+
 .flyer-detail__overview-event-date {
   font-size: 1.25rem;
+  letter-spacing: 2.5px;
 }
 
 .flyer-detail__description {
@@ -165,10 +171,18 @@ body {
   fill: #1dcaff;
 }
 
+.flyer-detail__social-links-twitter a {
+  fill: #1dcaff;
+}
+
 .flyer-detail__social-links-facebook {
   flex: 0 0 50%;
   height: 3rem;
   width: 3rem;
+  fill: #3b5998;
+}
+
+.flyer-detail__social-links-facebook a {
   fill: #3b5998;
 }
 
@@ -179,7 +193,7 @@ body {
   background-color: var(--color-grey-light-2);
   margin: 5rem 5rem;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   -webkit-box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, 0.75);
   box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, 0.75);
@@ -233,8 +247,12 @@ body {
   text-transform: uppercase;
   letter-spacing: .25rem;
   margin-left: 1rem;
-  color: var(--color-grey-dark-1);
   border-bottom: 1px solid var(--color-grey-dark-1);
+}
+
+.flyer-detail__location-address a {
+  text-decoration: none;
+  color: var(--color-grey-dark-1);
 }
 
 .flyer-view {

@@ -12,7 +12,7 @@
         <h1><%= flyer.eventname %></h1>
       </li>
       <li class="flyer-detail__overview-event-venue">
-        <h3><%= flyer.venuename %></h3>
+        <h3><a href="<%= flyer.website %>"><%= flyer.venuename %></a></h3>
       </li>
       <li class="flyer-detail__overview-event-date">
         <h3><%= flyer.eventdate %></h3>
@@ -29,10 +29,10 @@
     </div>
     <div class="flyer-detail__social-links">
       <svg class="flyer-detail__social-links-facebook">
-        <use xlink:href="/images/sprite.svg#icon-facebook"></use>
+        <a href="https://facebook.com"><use xlink:href="/images/sprite.svg#icon-facebook"></use></a>
       </svg>
       <svg class="flyer-detail__social-links-twitter">
-        <use xlink:href="/images/sprite.svg#icon-twitter"></use>
+        <a href="https://twitter.com"><use xlink:href="/images/sprite.svg#icon-twitter"></use></a>
       </svg>
     </div>
     <div class="flyer-detail__promoter-rating">
@@ -40,7 +40,7 @@
         <img src="/images/promoter.png" alt="promoter image">
       </div>
       <div class="flyer-detail__promoter-rating-info">
-        <p class="flyer-detail__promoter-rating-info__name">Patrick Porche</p>
+        <p class="flyer-detail__promoter-rating-info__name">Promoter</p>
         <div class="flyer-detail__promoter-rating-info__stars">
           <svg class="flyer-detail__promoter-rating-info__icon-star">
             <use xlink:href="/images/sprite.svg#icon-star"></use>
@@ -67,7 +67,7 @@
         </svg>
       </div>
       <div class="flyer-detail__location-address">
-        <p class="direction">Get directions</p>
+        <p class="direction"><a href="http://maps.google.com">Get directions</a></p>
       </div>
     </div>
   </div>
