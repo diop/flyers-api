@@ -1,22 +1,35 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 
-const { addPromotion } from './database/actions'
+const { addPromotion, addVisitor } = require('./database/queries')
+
+const port = process.env.PORT || 3000
 
 const app = express()
 
-app.use(bodyParser.urlencoded({ extended: false }))
+const urlencodedParser = bodyParser.urlencoded({ extended: false })
 
-const port = process.env.PORT || 3000
 
 app.get('/', (req, res, next) => {
   res.send({message: 'Show me the parties'})
 })
 
-app.post('/promotion', (req, res) => {
+app.post('/promotion', urlencodedParser, (req, res) => {
   console.log('req.body:', req.body)
 
   addPromotion(req.body)
+    .then(() => {
+      res.end() // redirect to homepage
+    })
+    .catch(console.error)
+})
+
+app.post('/visitor', urlencodedParser, (req, res) => {
+  console.log('req.body:', req.body)
+
+  addVisitor(req.body.email)
+
+  res.end()
 })
 
 app.listen(port, () => {
