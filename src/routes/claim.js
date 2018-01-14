@@ -10,6 +10,7 @@ router.get('/:eventId/:promoterId?', (req, res) => {
 })
 
 router.post('/:eventId/:promoterId?', (req, res) => {
+  console.log('req.body:', req.body)
   const { visitorEmail } = req.body
   const { eventId, promoterId } = req.params
 
@@ -24,6 +25,7 @@ router.post('/:eventId/:promoterId?', (req, res) => {
 
       res.send(`an email has been sent to ${visitorEmail} with a qr code`)
     })
+    .catch(console.error)
 })
 
 module.exports = router

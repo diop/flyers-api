@@ -23,6 +23,7 @@ router.post('/:eventId', (req, res) => {
       res.send(`email with your event link sent to ${promoterEmail}`)
       // res.redirect(`/details/${eventId}`)
     })
+    .catch(console.error)
 })
 
 module.exports = router

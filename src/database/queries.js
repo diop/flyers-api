@@ -29,7 +29,7 @@ const addPromoter = (parameters) => {
 }
 
 const getAllFlyers = () => {
-  return db.query(`SELECT id ,flyerUrl from event`);
+  return db.query(`SELECT id ,flyerUrl from event`)
 }
 
 const getFlyer = (flyerId) => {

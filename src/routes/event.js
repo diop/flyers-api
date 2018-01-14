@@ -7,12 +7,11 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-  console.log('req.body:', req.body)
-
   addEvent(req.body)
     .then((eventId) => {
       res.redirect(`/details/${eventId}`)
-  })
+    })
+    .catch(console.error)
 })
 
 module.exports = router
