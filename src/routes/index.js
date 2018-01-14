@@ -11,4 +11,9 @@ router.get('/', (req, res) => {
     .catch(console.error)
 })
 
+router.get('/admin', (req, res) => {
+  res.render('admin')
+})
+
+
 module.exports = router
