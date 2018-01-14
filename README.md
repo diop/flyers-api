@@ -11,8 +11,8 @@ Businesses can use the Flyers platform to promote any event, product or service.
 
 # Promoters
 
-Promoters are everyday people who can earn money using our platform. They are incentived by rewards the business offers for getting the word out. They get a customized link which tracks how by users they attract to their promotion. If a promoter is great at their job, they make more money.
+Promoters are everyday people who can earn money using our platform. They are incentived by rewards the business offers for getting the word out. They get a customized link which tracks how many users they attract to their promotion. If a promoter is great at their job, they make more money.
 
 # Visitors
 
-The world and all its people. Visitors come to our platform through promoters or by themeselves. Here on our platform, they enage with the best their local businesses have to promote.
+The world and all its people. Visitors come to our platform through promoters or by themeselves. Here on our platform, they engage with the best their local businesses have to promote.
