@@ -2,11 +2,12 @@ const express = require('express')
 const bodyParser = require('body-parser')
 
 const path = require('path')
-const 
 
 // const { addPromotion } from './database/actions'
 
 const qr = require('qr-image')
+
+const app = express();
 
 const { addPromotion, addVisitor } = require('./database/queries')
 
@@ -21,8 +22,6 @@ app.set("views", path.join(__dirname, "views"));
 
 app.use(express.static(`${ROOT_DIR}/public`));
 app.use(bodyParser.urlencoded({ extended: false }))
-
-const app = express()
 
 const urlencodedParser = bodyParser.urlencoded({ extended: false })
 
