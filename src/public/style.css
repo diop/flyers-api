@@ -155,6 +155,7 @@ body {
   flex-direction: row;
   align-content: center;
   padding: 3rem;
+  cursor: pointer;
 }
 
 .flyer-detail__social-links-twitter {
@@ -218,6 +219,7 @@ body {
   padding: 2rem;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .flyer-detail__location-icon__icon {
@@ -381,6 +383,16 @@ body {
   padding: 2rem;
   display: flex;
   flex-direction: column;
+}
+
+.promote-form h1 {
+  font-size: 5rem;
+  text-align: center;
+}
+
+.promote-form p {
+  font-size: 2.5rem;
+  text-align: center;
 }
 
 .form {

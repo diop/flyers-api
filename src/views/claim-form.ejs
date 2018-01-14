@@ -2,8 +2,10 @@
 <% var actionString = ''.concat(flyerId, promoterId ? '/' + promoterId : '') %>
 
 <div class="main-content">
-  <div class="claim-form">
+  <div class="promote-form">
     <form action="/claim/<%= actionString %>" method="post" class="form">
+      <h1>Claim your reward!</h1>
+      <p>Enter your email and we'll seed you a code to claim your rewards!</p>
       <div class="form__group">
         <label class="form__label" for="email">Email</label>
         <input class="form__input" type="text" id="email">
