@@ -142,6 +142,11 @@ body {
   font-weight: 700;
 }
 
+.flyer-detail__purchase-button a {
+  text-decoration: none;
+  color: #fff;
+}
+
 .flyer-detail__social-links {
   display: flex;
   background-color: #fff;
