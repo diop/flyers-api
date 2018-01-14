@@ -12,6 +12,7 @@ const connection = {
 //   password: "2649ef6883f757f61e4ccd688189cebe12fbf020626661ef531b1953b44cd2e2"
 // };
 
-const db = pgp(connection)
+
+const db = pgp(process.env.DATABASE_URL || connection)
 
 module.exports =  { db }
