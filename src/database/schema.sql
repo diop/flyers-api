@@ -13,7 +13,9 @@ CREATE TABLE promotion (
   startTime TEXT,
   endTime TEXT,
   email TEXT,
-  eventDate TEXT
+  eventDate TEXT,
+  eventName TEXT,
+  venueName TEXT
 );
 
 DROP TABLE IF EXISTS visitor;
