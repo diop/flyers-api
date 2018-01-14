@@ -29,6 +29,18 @@ app.post('/visitor', urlencodedParser, (req, res) => {
 
   addVisitor(req.body.email)
 
+  // send email with qr code
+
+  res.end()
+})
+
+app.post('/promoter', urlencodedParser, (req, res) => {
+  console.log('req.body:', req.body)
+
+  addVisitor(req.body)
+
+  // generate and show link
+
   res.end()
 })
 
