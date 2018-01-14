@@ -1,17 +1,19 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-
 const path = require('path')
-
 const qr = require('qr-image')
 
 const app = express();
 
-const { addPromotion, addVisitor, addPromoter } = require('./database/queries')
-
+const {
+  addPromotion,
+  addVisitor,
+  addPromoter,
+  isValidRedemtion,
+  addRedemtion
+} = require('./database/queries')
 
 const port = process.env.PORT || 3000
-
 
 const ROOT_DIR = path.resolve(__dirname, "./");
 
@@ -21,9 +23,7 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.static(`${ROOT_DIR}/public`));
 app.use(bodyParser.urlencoded({ extended: false }))
 
-const urlencodedParser = bodyParser.urlencoded({ extended: false })
-
-app.post('/promotion', urlencodedParser, (req, res) => {
+app.post('/promotion', (req, res) => {
   console.log('req.body:', req.body)
 
   addPromotion(req.body)
@@ -33,8 +33,7 @@ app.post('/promotion', urlencodedParser, (req, res) => {
     .catch(console.error)
 })
 
-
-app.post('/promoter/:eventId', urlencodedParser, (req, res) => {
+app.post('/promoter/:eventId', (req, res) => {
   console.log('req.body:', req.body)
 
   const { eventId } = req.params
@@ -52,7 +51,7 @@ app.post('/promoter/:eventId', urlencodedParser, (req, res) => {
 })
 
 
-app.get('/details/eventId/:promoterId?', (req, res) => {
+app.get('/details/promotionId/:promoterId?', (req, res) => {
   res.render('flyer')
 })
 
@@ -64,7 +63,7 @@ app.get('/visitor/:promoterId', (req, res) => {
 })
 
 
-app.post('/visitor/:promotionId/:promoterId?', urlencodedParser, (req, res) => {
+app.post('/visitor/:promotionId/:promoterId?', (req, res) => {
   const { visitorEmail } = req.body
   const { promoterId } = req.params
 
@@ -93,6 +92,14 @@ app.get('/promotion', (req, res) => {
 })
 
 
+app.get('/redeem/:promotionId/:promoterId/:visitorId', (req, res) => {
+  if (isValidRedemtion(req.params)) {
+    addRedemtion(req.params)
+    res.send('Valid!')
+  } else {
+    res.send('Invalid!')
+  }
+})
 
 
 // app.get('/', (req, res, next) => {

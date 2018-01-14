@@ -28,4 +28,26 @@ const addPromoter = (parameters) => {
   )
 }
 
-module.exports = { addPromotion, addVisitor, addPromoter }
+const isValidRedemtion = (parameters) => {
+  return db.query(
+    `SELECT * FROM redemptions WHERE promotionId=$[promotionId]
+      AND promoterId=$[promoterId] AND visitorId=$[visitorId];`,
+    parameters
+  ).then(results => results.length === 0)
+}
+
+const addRedemtion = (parameters) => {
+  return db.query(
+    `INSERT INTO redemptions (promotionId, promoterId, visitorId)
+      VALUES ($[promotionId], $[promoterId], $[visitorId]);`,
+    parameters
+  )
+}
+
+module.exports = {
+  addPromotion,
+  addVisitor,
+  addPromoter,
+  isValidRedemtion,
+  addRedemtion
+}
