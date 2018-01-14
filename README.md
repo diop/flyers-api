@@ -28,7 +28,7 @@ The world and all its people. Visitors come to our platform through promoters or
 - Promoter spreading the word -
 
 1. Promoter picks up an event to promote by clicking the 'Promote' button. This renders a form.
-2. Promoter enters data and get a custom link. They promote this custom link.
+2. Promoter enters data and get a custom link. They promote this custom link. Data is stored in a Postgres database.
 
 - Visitors claim a promotion - 
 
