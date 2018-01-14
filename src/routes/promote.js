@@ -8,8 +8,6 @@ router.get('/:eventId', (req, res) => {
 })
 
 router.post('/:eventId', (req, res) => {
-  console.log('req.body:', req.body)
-
   const { eventId } = req.params
 
   addPromoter(req.body)
@@ -20,8 +18,7 @@ router.post('/:eventId', (req, res) => {
 
       sendEventLinkEmail(promoterEmail, detailsLink, eventId)
 
-      res.send(`email with your event link sent to ${promoterEmail}`)
-      // res.redirect(`/details/${eventId}`)
+      res.redirect(`/details/${eventId}`)
     })
     .catch(console.error)
 })

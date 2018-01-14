@@ -1,4 +1,5 @@
 const router = require('express').Router()
+const qr = require('qr-image')
 
 const { addVisitor } = require('../database/queries')
 const { sendQrCodeEmail } = require('../utilities/email')
@@ -10,20 +11,19 @@ router.get('/:eventId/:promoterId?', (req, res) => {
 })
 
 router.post('/:eventId/:promoterId?', (req, res) => {
-  console.log('req.body:', req.body)
-  const { visitorEmail } = req.body
+  const { email } = req.body
   const { eventId, promoterId } = req.params
 
   const flyersPromoterId = 1
 
-  addVisitor(visitorEmail)
+  addVisitor(email)
     .then((visitorId) => {
       const redeemUrl = `/redeem/${eventId}/${promoterId || flyersPromoterId}/${visitorId}`
       const qrImage = qr.image(redeemUrl, { type: 'png' })
 
-      sendQrCodeEmail(visitorEmail, qrImage, eventId)
+      sendQrCodeEmail(email, qrImage, eventId)
 
-      res.send(`an email has been sent to ${visitorEmail} with a qr code`)
+      res.redirect(`/details/${eventId}/${promoterId ? promoterId : ''}`)
     })
     .catch(console.error)
 })

@@ -1,7 +1,5 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const path = require('path')
-const qr = require('qr-image')
 
 const indexRoute = require('./routes')
 const detailsRoute = require('./routes/details')
