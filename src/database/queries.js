@@ -4,10 +4,10 @@ const addPromotion = (parameters) => {
   return db.query(
     `INSERT INTO promotion (website, address, city, zip, phoneNumber,
         totalRewards, incentives, ethWalletAddress, startTime, endTime,
-        email, flyerUrl, eventDate, eventName, venueName)
+        email, flyerUrl, eventDate, eventName, venueName, flyerUrl)
       VALUES ($[website], $[address], $[city], $[zip], $[phoneNumber],
         $[totalRewards], $[incentives], $[ethWalletAddress], $[startTime], $[endTime],
-        $[email], $[flyerUrl], $[eventDate], $[eventName], $[venueName])`,
+        $[email], $[flyerUrl], $[eventDate], $[eventName], $[venueName], $[flyerUrl])`,
     parameters
   )
 }
@@ -19,4 +19,12 @@ const addVisitor = (email) => {
   )
 }
 
-module.exports = { addPromotion, addVisitor }
+const addPromoter = (parameters) => {
+  return db.query(
+    `INSERT INTO promoter (email, ethWalletAddress)
+      VALUES ($[email], $[ethWalletAddress])`,
+    parameters
+  )
+}
+
+module.exports = { addPromotion, addVisitor, addPromoter }

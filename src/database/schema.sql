@@ -15,11 +15,19 @@ CREATE TABLE promotion (
   email TEXT,
   eventDate TEXT,
   eventName TEXT,
-  venueName TEXT
+  venueName TEXT,
+  flyerUrl TEXT
 );
 
 DROP TABLE IF EXISTS visitor;
 CREATE TABLE visitor (
   id SERIAL PRIMARY KEY,
   email TEXT
+);
+
+DROP TABLE IF EXISTS promoter;
+CREATE TABLE promoter (
+  id SERIAL PRIMARY KEY,
+  email TEXT,
+  ethWalletAddress TEXT
 );
