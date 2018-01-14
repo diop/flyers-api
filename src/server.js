@@ -16,11 +16,11 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 const port = process.env.PORT || 3000
 
-app.get('/promotions', (req, res) => {
+app.get('/', (req, res) => {
   res.render('flyers')
 })
 
-app.get('/detail', (req, res) => {
+app.get('/details', (req, res) => {
   res.render('flyer')
 })
 
