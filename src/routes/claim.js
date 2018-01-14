@@ -13,16 +13,14 @@ router.post('/:eventId/:promoterId?', (req, res) => {
   const { visitorEmail } = req.body
   const { eventId, promoterId } = req.params
 
-  const flyersPromoterId = 123
+  const flyersPromoterId = 1
 
   addVisitor(visitorEmail)
     .then((visitorId) => {
       const redeemUrl = `/redeem/${eventId}/${promoterId || flyersPromoterId}/${visitorId}`
       const qrImage = qr.image(redeemUrl, { type: 'png' })
 
-      sendQrCodeEmail(visitorEmail, qrImage)
-
-      // qrImage.pipe(require('fs').createWriteStream('qrImage.png'))
+      sendQrCodeEmail(visitorEmail, qrImage, eventId)
 
       res.send(`an email has been sent to ${visitorEmail} with a qr code`)
     })

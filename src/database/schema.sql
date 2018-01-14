@@ -32,6 +32,11 @@ CREATE TABLE promoter (
   ethWalletAddress TEXT
 );
 
+INSERT INTO
+  promoter (email, ethWalletAddress)
+VALUES
+  ('flyers.ai.promotions@gmail.com', '123');
+
 DROP TABLE IF EXISTS redemptions;
 CREATE TABLE redemptions (
   eventId INT,

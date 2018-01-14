@@ -18,7 +18,7 @@ router.post('/:eventId', (req, res) => {
 
       const promoterEmail = req.body.email
 
-      sendEventLinkEmail(promoterEmail, detailsLink)
+      sendEventLinkEmail(promoterEmail, detailsLink, eventId)
 
       res.send(`email with your event link sent to ${promoterEmail}`)
       // res.redirect(`/details/${eventId}`)
