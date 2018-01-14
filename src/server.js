@@ -8,6 +8,8 @@ const app = express();
 const {
   addPromotion,
   addVisitor,
+  getAllFlyers,
+  getFlyer,
   addPromoter,
   isValidRedemtion,
   addRedemtion
@@ -29,10 +31,32 @@ app.post('/promotion', (req, res) => {
   addPromotion(req.body)
     .then((promotionId) => {
       res.redirect(`/details/${promotionId}`)
+  })
+})
+
+app.get('/', (req, res) => {
+  // res.render('flyers')
+  getAllFlyers()
+    .then((flyers) => {
+      // console.log('flyers', flyers)
+      res.render('flyers', {flyers})
     })
     .catch(console.error)
 })
 
+
+app.get('/details/:id', (req, res) => {
+  // res.render('flyer')
+  // console.log('req.params', req.params)
+
+  getFlyer(req.params.id)
+    .then((flyer) => {
+      console.log('flyer', flyer[0])
+      res.render('flyer', {flyer: flyer[0]})
+    })
+    .catch(console.error)
+})
+  
 app.post('/promoter/:eventId', (req, res) => {
   console.log('req.body:', req.body)
 
@@ -49,12 +73,6 @@ app.post('/promoter/:eventId', (req, res) => {
       res.redirect(`/details/${eventId}`)
     })
 })
-
-
-app.get('/details/promotionId/:promoterId?', (req, res) => {
-  res.render('flyer')
-})
-
 
 app.get('/visitor/:promoterId', (req, res) => {
   // render form to accept visitor's email
@@ -82,16 +100,6 @@ app.post('/visitor/:promotionId/:promoterId?', (req, res) => {
 })
 
 
-app.get('/', (req, res) => {
-  res.render('flyers')
-})
-
-
-app.get('/promotion', (req, res) => {
-
-})
-
-
 app.get('/redeem/:promotionId/:promoterId/:visitorId', (req, res) => {
   if (isValidRedemtion(req.params)) {
     addRedemtion(req.params)
@@ -100,13 +108,6 @@ app.get('/redeem/:promotionId/:promoterId/:visitorId', (req, res) => {
     res.send('Invalid!')
   }
 })
-
-
-// app.get('/', (req, res, next) => {
-//   res.send({message: 'Show me the parties'})
-// })
-
-
 
 
 app.listen(port, () => {

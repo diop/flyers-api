@@ -120,7 +120,7 @@ body {
 }
 
 .flyer-detail__purchase {
-  margin-top: 1.5rem;
+  /* margin-top: 1.5rem; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -140,6 +140,11 @@ body {
   margin-bottom: 4rem;
   color: white;
   font-weight: 700;
+}
+
+.flyer-detail__purchase-button a {
+  text-decoration: none;
+  color: #fff;
 }
 
 .flyer-detail__social-links {
@@ -238,6 +243,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
 }
 
 .flyer-view__image-grid img {

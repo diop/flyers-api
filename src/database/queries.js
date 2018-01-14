@@ -28,6 +28,17 @@ const addPromoter = (parameters) => {
   )
 }
 
+
+const getAllFlyers = () => {
+  return db.query(`SELECT id ,flyerUrl from promotion`);
+}
+
+const getFlyer = (flyerId) => {
+  return db.query(
+    'SELECT * from promotion WHERE id=$1', [flyerId]
+  )
+}
+
 const isValidRedemtion = (parameters) => {
   return db.query(
     `SELECT * FROM redemptions WHERE promotionId=$[promotionId]
@@ -48,6 +59,8 @@ module.exports = {
   addPromotion,
   addVisitor,
   addPromoter,
+  getAllFlyers,
+  getFlyer,
   isValidRedemtion,
   addRedemtion
 }
