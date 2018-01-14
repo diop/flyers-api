@@ -3,13 +3,11 @@ const bodyParser = require('body-parser')
 
 const path = require('path')
 
-// const { addPromotion } from './database/actions'
-
 const qr = require('qr-image')
 
 const app = express();
 
-const { addPromotion, addVisitor } = require('./database/queries')
+const { addPromotion, addVisitor, addPromoter } = require('./database/queries')
 
 
 const port = process.env.PORT || 3000
@@ -25,56 +23,84 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 const urlencodedParser = bodyParser.urlencoded({ extended: false })
 
-app.get('/', (req, res) => {
-  res.render('flyers')
+app.post('/promotion', urlencodedParser, (req, res) => {
+  console.log('req.body:', req.body)
+
+  addPromotion(req.body)
+    .then((promotionId) => {
+      res.redirect(`/details/${promotionId}`)
+    })
+    .catch(console.error)
 })
 
-app.get('/details', (req, res) => {
+
+app.post('/promoter/:eventId', urlencodedParser, (req, res) => {
+  console.log('req.body:', req.body)
+
+  const { eventId } = req.params
+
+  addPromoter(req.body)
+    .then((promoterId) => {
+      const detailsLink = `/details/${eventId}/${promoterId}`
+
+      const promotersEmail = req.body.email
+
+      // send detailsLink in email to promotersEmail
+
+      res.redirect(`/details/${eventId}`)
+    })
+})
+
+
+app.get('/details/eventId/:promoterId?', (req, res) => {
   res.render('flyer')
 })
 
 
-app.get('/promote', (req, res) => {
-  res.render('promote-form')
+app.get('/visitor/:promoterId', (req, res) => {
+  // render form to accept visitor's email
+  res.render('promotion-form')
+  // form action should include promoterId
 })
+
+
+app.post('/visitor/:promotionId/:promoterId?', urlencodedParser, (req, res) => {
+  const { visitorEmail } = req.body
+  const { promoterId } = req.params
+
+  const flyersPromoterId = 123
+
+  addVisitor(visitorEmail)
+    .then((visitorId) => {
+      const redeemUrl = `/redeem/${promotionId}/${promoterId || flyersPromoterId}/${visitorId}`
+      const qrImage = qr.image(redeemUrl, { type: 'png' })
+
+      // send email to visitorEmail with qrImage
+      qrImage.pipe(require('fs').createWriteStream('qrImage.png'))
+
+      res.send(`an email has been sent to ${visitorEmail} with a qr code`)
+    })
+})
+
+
+app.get('/', (req, res) => {
+  res.render('flyers')
+})
+
+
+app.get('/promotion', (req, res) => {
+
+})
+
+
+
 
 // app.get('/', (req, res, next) => {
 //   res.send({message: 'Show me the parties'})
 // })
 
-app.post('/promotion', urlencodedParser, (req, res) => {
 
-  console.log('req.body:', req.body)
 
-  addPromotion(req.body)
-    .then(() => {
-      res.end() // redirect to homepage
-    })
-    .catch(console.error)
-})
-
-app.post('/visitor/:promoterCode?', urlencodedParser, (req, res) => {
-  console.log('req.body:', req.body)
-  console.log('req.parameters', req.params)
-
-  addVisitor(req.body.email)
-
-  // send email with qr code
-  const qrImage = qr.image('data', { type: 'png' })
-  qrImage.pipe(require('fs').createWriteStream('qrImage.png'))
-
-  res.end()
-})
-
-app.post('/promoter', urlencodedParser, (req, res) => {
-  console.log('req.body:', req.body)
-
-  addVisitor(req.body)
-
-  // generate and show link
-
-  res.end()
-})
 
 app.listen(port, () => {
   console.log('Listening for parties on port: ', port)
