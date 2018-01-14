@@ -16,7 +16,8 @@
       "email": "reservations@audiosf.com",
       "eventDate": "01/13/2018",
       "eventName": "Oliver Nelson",
-      "venueName": "Audio SF"
+      "venueName": "Audio SF",
+      "flyerUrl": "../../public/images/concert-flyer-01.jpg"
     },
     {
       "id": 2,
@@ -34,7 +35,8 @@
       "email": "reservations@audiosf.com",
       "eventDate": "01/19/2018",
       "eventName": "Ardalan",
-      "venueName": "Audio SF"
+      "venueName": "Audio SF",
+      "flyerUrl": "../../public/images/concert-flyer-02.jpg"
     },
     {
       "id": 3,
@@ -52,7 +54,8 @@
       "email": "reservations@audiosf.com",
       "eventDate": "02/09/2018",
       "eventName": "Chris Lake",
-      "venueName": "Audio SF"
+      "venueName": "Audio SF",
+      "flyerUrl": "../../public/images/concert-flyer-03.jpg"
     },
     {
       "id": 4,
@@ -70,7 +73,8 @@
       "email": "reservations@audiosf.com",
       "eventDate": "02/15/2018",
       "eventName": "Volac",
-      "venueName": "Audio SF"
+      "venueName": "Audio SF",
+      "flyerUrl": "../../public/images/concert-flyer-04.jpg"
     },
     {
       "id": 5,
@@ -88,7 +92,8 @@
       "email": "reservations@audiosf.com",
       "eventDate": "03/02/2018",
       "eventName": "Mark Knight",
-      "venueName": "Audio SF"
+      "venueName": "Audio SF",
+      "flyerUrl": "../../public/images/concert-flyer-05.jpg"
     },
     {
       "id": 6,
@@ -106,7 +111,8 @@
       "email": "reservations@audiosf.com",
       "eventDate": "02/02/2018",
       "eventName": "DJ Destructo",
-      "venueName": "Audio SF"
+      "venueName": "Audio SF",
+      "flyerUrl": "../../public/images/concert-flyer-06.jpg"
     },
     {
       "id": 7,
@@ -124,7 +130,8 @@
       "email": "reservations@audiosf.com",
       "eventDate": "01/19/2018",
       "eventName": "Belly Kenny",
-      "venueName": "Audio SF"
+      "venueName": "Audio SF",
+      "flyerUrl": "../../public/images/concert-flyer-07.jpg"
     },
     {
       "id": 8,
@@ -142,7 +149,8 @@
       "email": "reservations@audiosf.com",
       "eventDate": "01/19/2018",
       "eventName": "Break Bot",
-      "venueName": "Audio SF"
+      "venueName": "Audio SF",
+      "flyerUrl": "../../public/images/concert-flyer-08.jpg"
     },
     {
       "id": 9,
@@ -160,7 +168,8 @@
       "email": "reservations@audiosf.com",
       "eventDate": "01/19/2018",
       "eventName": "Satin Jacket",
-      "venueName": "Audio SF"
+      "venueName": "Audio SF",
+      "flyerUrl": "../../public/images/concert-flyer-09.jpg"
     },
     {
       "id": 10,
@@ -178,7 +187,8 @@
       "email": "reservations@audiosf.com",
       "eventDate": "01/19/2018",
       "eventName": "Neon Indian",
-      "venueName": "Audio SF"
+      "venueName": "Audio SF",
+      "flyerUrl": "../../public/images/concert-flyer-10.jpg"
     },
     {
       "id": 11,
@@ -196,6 +206,7 @@
       "email": "reservations@audiosf.com",
       "eventDate": "01/19/2018",
       "eventName": "Eric Morillo",
-      "venueName": "Audio SF"
-    },
+      "venueName": "Audio SF",
+      "flyerUrl": "../../public/images/concert-flyer-11.jpg"
+    }
 ]
