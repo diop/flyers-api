@@ -11,8 +11,10 @@ router.post('/:eventId', (req, res) => {
   const { eventId } = req.params
 
   addPromoter(req.body)
-    .then((promoterId) => {
-      const detailsLink = `/details/${eventId}/${promoterId}`
+    .then((results) => {
+      const promoterId = results[0].id
+
+      const detailsLink = `http://www.flyers.ai/details/${eventId}/${promoterId}`
 
       const promoterEmail = req.body.email
 

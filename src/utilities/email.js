@@ -3,7 +3,7 @@ const nodemailer = require('nodemailer')
 const { getFlyer } = require('../database/queries')
 
 const formatEventDetails = (details) => {
-  return `<img src="http://flyers.ai${details.flyerurl}" /><br>
+  return `<img src="http://www.flyers.ai${details.flyerurl}" /><br>
 ${details.eventname}
 ${details.eventDate} ${details.starttime} - ${details.endtime}
 ${details.venuename}
@@ -25,12 +25,13 @@ const sendEventLinkEmail = (emailAddress, eventLink, eventId) => {
   getFlyer(eventId)
   .then(results => {
     const eventDetails = results[0]
-    const mailOptions = {
-      from: '"Fred Foo 👻" <flyers.ai.promotions@gmail.com>',
-      to: emailAddress,
-      subject: `${eventDetails.eventname} Event Link`,
-      text: `Share this link with your friends: ${eventLink}`
-    }
+
+    let mailOptions = {
+        from: '"Fred Foo 👻" <foo@blurdybloop.com>',
+        to: emailAddress,
+        subject: `${eventDetails.eventname} Event Link`,
+        text: `Share this link with your friends: ${eventLink}`
+    };
 
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
