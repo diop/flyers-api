@@ -16,7 +16,7 @@
   "keywords": [
     "Flyers.ai"
   ],
-  "author": "Patrick Porche, Jason Emberley, Zubair Ahmed, Fodé Diop",
+  "author": "Patrick Porché, Jason Emberley, Zubair Ahmed, Fodé Diop",
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.18.2",
