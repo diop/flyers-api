@@ -5,7 +5,10 @@
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js ",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "db:create": "createdb flyers",
+    "db:schema": "psql -d flyers < src/database/schema.sql",
+    "db:seed": "psql -d flyers < src/database/seed.sql"
   },
   "keywords": [
     "Flyers.ai"
@@ -13,7 +16,9 @@
   "author": "Fodé Diop",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.16.2"
+    "busboy": "^0.2.14",
+    "express": "^4.16.2",
+    "pg-promise": "^7.3.3"
   },
   "devDependencies": {
     "nodemon": "^1.14.10"
