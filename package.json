@@ -8,9 +8,10 @@
     "start:dev": "nodemon src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "db:create": "createdb flyers",
-    "db:init": "dropdb flyers; createdb flyers; psql flyers < ./src/database/schema.sql; psql flyers < ./src/database/load-data.sql; psql -d flyers",
+    "db:drop": "dropdb flyers",
     "db:schema": "psql -d flyers < src/database/schema.sql",
-    "db:seed": "psql -d flyers < src/database/seed.sql"
+    "db:seed": "psql flyers < ./src/database/load-data.sql"
+    "db:init": "npm run db:drop; npm run db:create; npm run db:schema; npm run db:seed",
   },
   "keywords": [
     "Flyers.ai"

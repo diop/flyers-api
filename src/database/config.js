@@ -7,4 +7,4 @@ const connection = {
 
 const db = pgp(connection)
 
-module.exports.db = db
+module.exports =  { db }

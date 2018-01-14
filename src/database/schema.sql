@@ -31,3 +31,11 @@ CREATE TABLE promoter (
   email TEXT,
   ethWalletAddress TEXT
 );
+
+DROP TABLE IF EXISTS redemptions;
+CREATE TABLE redemptions (
+  promotionId INT,
+  promoterId INT,
+  visitorId INT,
+  PRIMARY KEY(promotionId, promoterId, visitorId)
+);
