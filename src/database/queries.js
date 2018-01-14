@@ -1,8 +1,8 @@
 const { db } = require('./config')
 
-const addPromotion = (parameters) => {
+const addEvent = (parameters) => {
   return db.query(
-    `INSERT INTO promotion (website, address, city, zip, phoneNumber,
+    `INSERT INTO event (website, address, city, zip, phoneNumber,
         totalRewards, incentives, ethWalletAddress, startTime, endTime,
         email, flyerUrl, eventDate, eventName, venueName, flyerUrl)
       VALUES ($[website], $[address], $[city], $[zip], $[phoneNumber],
@@ -28,20 +28,19 @@ const addPromoter = (parameters) => {
   )
 }
 
-
 const getAllFlyers = () => {
-  return db.query(`SELECT id ,flyerUrl from promotion`);
+  return db.query(`SELECT id ,flyerUrl from event`);
 }
 
 const getFlyer = (flyerId) => {
   return db.query(
-    'SELECT * from promotion WHERE id=$1', [flyerId]
+    'SELECT * from event WHERE id=$1', [flyerId]
   )
 }
 
 const isValidRedemtion = (parameters) => {
   return db.query(
-    `SELECT * FROM redemptions WHERE promotionId=$[promotionId]
+    `SELECT * FROM redemptions WHERE eventId=$[eventId]
       AND promoterId=$[promoterId] AND visitorId=$[visitorId];`,
     parameters
   ).then(results => results.length === 0)
@@ -49,14 +48,14 @@ const isValidRedemtion = (parameters) => {
 
 const addRedemtion = (parameters) => {
   return db.query(
-    `INSERT INTO redemptions (promotionId, promoterId, visitorId)
-      VALUES ($[promotionId], $[promoterId], $[visitorId]);`,
+    `INSERT INTO redemptions (eventId, promoterId, visitorId)
+      VALUES ($[eventId], $[promoterId], $[visitorId]);`,
     parameters
   )
 }
 
 module.exports = {
-  addPromotion,
+  addEvent,
   addVisitor,
   addPromoter,
   getAllFlyers,

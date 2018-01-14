@@ -1,5 +1,5 @@
 [
-  "promotions": [
+  "event": [
     {
       "id": 1,
       "website": "http://www.audiosf.com",

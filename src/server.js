@@ -5,10 +5,10 @@ const qr = require('qr-image')
 
 const indexRoute = require('./routes')
 const detailsRoute = require('./routes/details')
-const promoterRoute = require('./routes/promoter')
-const promotionRoute = require('./routes/promotion')
+const promoteRoute = require('./routes/promote')
+const eventRoute = require('./routes/event')
 const redeemRoute = require('./routes/redeem')
-const visitorRoute = require('./routes/visitor')
+const claimRoute = require('./routes/claim')
 
 const app = express();
 
@@ -24,10 +24,10 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use('/', indexRoute)
 app.use('/details', detailsRoute)
-app.use('/promoter', promoterRoute)
-app.use('/promotion', promotionRoute)
+app.use('/promote', promoteRoute)
+app.use('/event', eventRoute)
 app.use('/redeem', redeemRoute)
-app.use('/visitor', visitorRoute)
+app.use('/claim', claimRoute)
 
 app.listen(port, () => {
   console.log('Listening for parties on port: ', port)

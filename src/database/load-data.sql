@@ -1,1 +1,1 @@
-\copy  promotion(website, address, city, state, zip, phoneNumber, totalRewards, incentives, ethWalletAddress, startTime, endTime, email, eventDate, eventName, venueName, flyerUrl) FROM './src/database/seed.csv' DELIMITER ',' CSV HEADER;
+\copy  event(website, address, city, state, zip, phoneNumber, totalRewards, incentives, ethWalletAddress, startTime, endTime, email, eventDate, eventName, venueName, flyerUrl) FROM './src/database/seed.csv' DELIMITER ',' CSV HEADER;

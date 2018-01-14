@@ -4,11 +4,11 @@ const { addVisitor } = require('../database/queries')
 
 router.get('/:promoterId', (req, res) => {
   // render form to accept visitor's email
-  res.render('promotion-form')
+  res.render('event-form')
   // form action should include promoterId
 })
 
-router.post('/:promotionId/:promoterId?', (req, res) => {
+router.post('/:eventId/:promoterId?', (req, res) => {
   const { visitorEmail } = req.body
   const { promoterId } = req.params
 
@@ -16,7 +16,7 @@ router.post('/:promotionId/:promoterId?', (req, res) => {
 
   addVisitor(visitorEmail)
     .then((visitorId) => {
-      const redeemUrl = `/redeem/${promotionId}/${promoterId || flyersPromoterId}/${visitorId}`
+      const redeemUrl = `/redeem/${eventId}/${promoterId || flyersPromoterId}/${visitorId}`
       const qrImage = qr.image(redeemUrl, { type: 'png' })
 
       // send email to visitorEmail with qrImage

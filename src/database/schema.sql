@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS promotion;
-CREATE TABLE promotion (
+DROP TABLE IF EXISTS event;
+CREATE TABLE event (
   id SERIAL PRIMARY KEY,
   website TEXT,
   address TEXT,
@@ -34,8 +34,8 @@ CREATE TABLE promoter (
 
 DROP TABLE IF EXISTS redemptions;
 CREATE TABLE redemptions (
-  promotionId INT,
+  eventId INT,
   promoterId INT,
   visitorId INT,
-  PRIMARY KEY(promotionId, promoterId, visitorId)
+  PRIMARY KEY(eventId, promoterId, visitorId)
 );
