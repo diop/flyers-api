@@ -1,6 +1,11 @@
 const router = require('express').Router()
 
 const { addPromoter } = require('../database/queries')
+const { sendEventLinkEmail } = require('../utilities/email')
+
+router.get('/:eventId', (req, res) => {
+  res.render('promote-form', { flyerId: req.params.eventId })
+})
 
 router.post('/:eventId', (req, res) => {
   console.log('req.body:', req.body)
@@ -11,11 +16,12 @@ router.post('/:eventId', (req, res) => {
     .then((promoterId) => {
       const detailsLink = `/details/${eventId}/${promoterId}`
 
-      const promotersEmail = req.body.email
+      const promoterEmail = req.body.email
 
-      // send detailsLink in email to promotersEmail
+      sendEventLinkEmail(promoterEmail, detailsLink)
 
-      res.redirect(`/details/${eventId}`)
+      res.send(`email with your event link sent to ${promoterEmail}`)
+      // res.redirect(`/details/${eventId}`)
     })
 })
 
