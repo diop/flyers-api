@@ -27,4 +27,14 @@ const addPromoter = (parameters) => {
   )
 }
 
-module.exports = { addPromotion, addVisitor, addPromoter }
+const getAllFlyers = () => {
+  return db.query(`SELECT id ,flyerUrl from promotion`);
+}
+
+const getFlyer = (flyerId) => {
+  return db.query(
+    'SELECT * from promotion WHERE id=$1', [flyerId]
+  )
+}
+
+module.exports = { addPromotion, addVisitor, addPromoter, getAllFlyers, getFlyer }

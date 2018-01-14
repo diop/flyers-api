@@ -9,7 +9,7 @@ const qr = require('qr-image')
 
 const app = express();
 
-const { addPromotion, addVisitor } = require('./database/queries')
+const { addPromotion, addVisitor, getAllFlyers, getFlyer } = require('./database/queries')
 
 
 const port = process.env.PORT || 3000
@@ -26,11 +26,25 @@ app.use(bodyParser.urlencoded({ extended: false }))
 const urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 app.get('/', (req, res) => {
-  res.render('flyers')
+  // res.render('flyers')
+  getAllFlyers()
+    .then((flyers) => {
+      // console.log('flyers', flyers)
+      res.render('flyers', {flyers})
+    })
+    .catch(console.error)
 })
 
-app.get('/details', (req, res) => {
-  res.render('flyer')
+app.get('/details/:id', (req, res) => {
+  // res.render('flyer')
+  // console.log('req.params', req.params)
+
+  getFlyer(req.params.id)
+    .then((flyer) => {
+      console.log('flyer', flyer[0])
+      res.render('flyer', {flyer: flyer[0]})
+    })
+    .catch(console.error)
 })
 
 

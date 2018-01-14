@@ -3,26 +3,29 @@
 <div class="content">
   <div class="flyer-view">
     <div class="flyer-view__image-grid">
-      <img src="/images/flyer.jpg" alt="flyer image">
+      <img src="<%= flyer.flyerurl %>" alt="flyer image">
     </div>
   </div>
   <div class="flyer-detail">
     <ul class="flyer-detail__overview">
       <li class="flyer-detail__overview-event-name">
-        <h1>Erick Morillo</h1>
+        <h1><%= flyer.eventname %></h1>
       </li>
       <li class="flyer-detail__overview-event-venue">
-        <h3>Audio SF</h3>
+        <h3><%= flyer.venuename %></h3>
       </li>
       <li class="flyer-detail__overview-event-date">
-        <h3>Fri, Feb 16, 2018</h3>
+        <h3><%= flyer.eventdate %></h3>
       </li>
     </ul>
     <div class="flyer-detail__description">
       <p class="flyer-detail__description-text">Support G-STAV</p>
     </div>
     <div class="flyer-detail__purchase">
-      <button class="flyer-detail__purchase-button">Purchase</button>
+      <button class="flyer-detail__purchase-button"><a href="/visitor/<%= flyer.id %>">Claim</a></button>
+    </div>
+    <div class="flyer-detail__purchase">
+      <button class="flyer-detail__purchase-button">Promote</button>
     </div>
     <div class="flyer-detail__social-links">
       <svg class="flyer-detail__social-links-facebook">
