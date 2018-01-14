@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const qr = require('qr-image')
-// const toString = require('stream-to-string')
+const toString = require('stream-to-string')
 
 const { addVisitor } = require('../database/queries')
 const { sendQrCodeEmail } = require('../utilities/email')
