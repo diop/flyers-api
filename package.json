@@ -9,8 +9,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "db:create": "createdb flyers",
     "db:drop": "dropdb flyers",
-    "db:schema": "psql -h ec2-23-23-243-111.compute-1.amazonaws.com -U gmtcavtiurzyhc -d d1p3rtk0vhsqe9 < src/database/schema.sql",
-    "db:seed": "psql -h ec2-23-23-243-111.compute-1.amazonaws.com -U gmtcavtiurzyhc -d d1p3rtk0vhsqe9 < ./src/database/load-data.sql",
+    "db:schema": "psql -h ec2-23-23-243-111.compute-1.amazonaws.com -U ujyhhmehibvwva -d d1jrjdt8d73p0c < src/database/schema.sql",
+    "db:seed": "psql -h ec2-23-23-243-111.compute-1.amazonaws.com -U ujyhhmehibvwva -d d1jrjdt8d73p0c < ./src/database/load-data.sql",
     "db:schema:dev": "psql -d flyers < src/database/schema.sql",
     "db:seed:dev": "psql -d flyers < ./src/database/load-data.sql",
     "db:init": "npm run db:drop; npm run db:create; npm run db:schema:dev; npm run db:seed:dev"
