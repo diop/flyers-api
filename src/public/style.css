@@ -378,7 +378,7 @@ body {
   background-color: var(--color-grey-light-2);
 }
 
-.user-nav__link a {
+.user-nav__link {
   text-decoration: none;
   color: var(--color-grey-dark-2);
   text-transform: uppercase;
